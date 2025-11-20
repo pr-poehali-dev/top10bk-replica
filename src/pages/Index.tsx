@@ -21,6 +21,9 @@ interface RatingItem {
 const Index = () => {
   const [selectedForComparison, setSelectedForComparison] = useState<number[]>([]);
   const [activeSection, setActiveSection] = useState<string>('ratings');
+  const [minRating, setMinRating] = useState<number>(0);
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [hasBonus, setHasBonus] = useState<boolean>(false);
 
   const ratings: RatingItem[] = [
     {
@@ -147,6 +150,19 @@ const Index = () => {
     return ratings.filter(item => selectedForComparison.includes(item.id));
   };
 
+  const filteredRatings = ratings.filter(item => {
+    if (minRating > 0 && item.rating < minRating) return false;
+    if (selectedCategory !== 'all' && item.category !== selectedCategory) return false;
+    if (hasBonus && !item.bonus) return false;
+    return true;
+  });
+
+  const resetFilters = () => {
+    setMinRating(0);
+    setSelectedCategory('all');
+    setHasBonus(false);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
       <header className="bg-white border-b sticky top-0 z-50 shadow-sm">
@@ -206,6 +222,76 @@ const Index = () => {
               </p>
             </div>
 
+            <Card className="mb-8 p-6 bg-white/80 backdrop-blur-sm">
+              <div className="flex flex-wrap gap-4 items-end">
+                <div className="flex-1 min-w-[200px]">
+                  <label className="text-sm font-medium text-secondary mb-2 block">
+                    Минимальный рейтинг
+                  </label>
+                  <div className="flex gap-2">
+                    {[0, 8.5, 9.0, 9.5].map(value => (
+                      <Button
+                        key={value}
+                        variant={minRating === value ? 'default' : 'outline'}
+                        size="sm"
+                        onClick={() => setMinRating(value)}
+                      >
+                        {value === 0 ? 'Все' : `${value}+`}
+                      </Button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="flex-1 min-w-[200px]">
+                  <label className="text-sm font-medium text-secondary mb-2 block">
+                    Категория
+                  </label>
+                  <div className="flex gap-2">
+                    <Button
+                      variant={selectedCategory === 'all' ? 'default' : 'outline'}
+                      size="sm"
+                      onClick={() => setSelectedCategory('all')}
+                    >
+                      Все
+                    </Button>
+                    <Button
+                      variant={selectedCategory === 'Букмекерская контора' ? 'default' : 'outline'}
+                      size="sm"
+                      onClick={() => setSelectedCategory('Букмекерская контора')}
+                    >
+                      БК
+                    </Button>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <Checkbox
+                    id="hasBonus"
+                    checked={hasBonus}
+                    onCheckedChange={(checked) => setHasBonus(checked as boolean)}
+                  />
+                  <label htmlFor="hasBonus" className="text-sm font-medium text-secondary cursor-pointer">
+                    Только с бонусами
+                  </label>
+                </div>
+
+                {(minRating > 0 || selectedCategory !== 'all' || hasBonus) && (
+                  <Button variant="ghost" size="sm" onClick={resetFilters}>
+                    <Icon name="X" size={16} className="mr-1" />
+                    Сбросить
+                  </Button>
+                )}
+              </div>
+
+              {filteredRatings.length > 0 && (
+                <div className="mt-4 pt-4 border-t">
+                  <p className="text-sm text-muted-foreground">
+                    Найдено: <span className="font-semibold text-secondary">{filteredRatings.length}</span> {filteredRatings.length === 1 ? 'результат' : 'результатов'}
+                  </p>
+                </div>
+              )}
+            </Card>
+
             {selectedForComparison.length > 0 && (
               <Card className="mb-8 p-6 bg-primary/5 border-primary/20 animate-scale-in">
                 <div className="flex items-center justify-between">
@@ -231,8 +317,16 @@ const Index = () => {
               </Card>
             )}
 
-            <div className="grid gap-6">
-              {ratings.map((item, index) => (
+            {filteredRatings.length === 0 ? (
+              <Card className="p-12 text-center">
+                <Icon name="Search" className="mx-auto mb-4 text-muted-foreground" size={48} />
+                <h3 className="text-xl font-semibold text-secondary mb-2">Ничего не найдено</h3>
+                <p className="text-muted-foreground mb-4">Попробуйте изменить параметры фильтрации</p>
+                <Button onClick={resetFilters}>Сбросить фильтры</Button>
+              </Card>
+            ) : (
+              <div className="grid gap-6">
+                {filteredRatings.map((item, index) => (
                 <Card 
                   key={item.id}
                   className="p-6 hover:shadow-xl transition-all duration-300 animate-fade-in border-l-4 border-l-primary/20 hover:border-l-primary"
@@ -324,8 +418,9 @@ const Index = () => {
                     </div>
                   </div>
                 </Card>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
           </div>
         )}
 
