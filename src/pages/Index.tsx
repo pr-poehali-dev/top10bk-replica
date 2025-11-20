@@ -16,6 +16,7 @@ interface RatingItem {
   features: string[];
   pros: string[];
   cons: string[];
+  logo: string;
 }
 
 const Index = () => {
@@ -35,7 +36,8 @@ const Index = () => {
       bonus: 'До 30 000 ₽',
       features: ['Быстрый вывод средств', 'Мобильное приложение', 'Лайв-ставки'],
       pros: ['Высокие коэффициенты', 'Большой выбор событий', 'Надёжность'],
-      cons: ['Требуется верификация']
+      cons: ['Требуется верификация'],
+      logo: 'https://images.unsplash.com/photo-1614680376593-902f74cf0d41?w=200&h=200&fit=crop'
     },
     {
       id: 2,
@@ -46,7 +48,8 @@ const Index = () => {
       bonus: 'До 25 000 ₽',
       features: ['Криптовалюты', 'Казино', 'Киберспорт'],
       pros: ['Множество способов оплаты', 'Бонусная программа', '24/7 поддержка'],
-      cons: ['Сложный интерфейс для новичков']
+      cons: ['Сложный интерфейс для новичков'],
+      logo: 'https://images.unsplash.com/photo-1579548122080-c35fd6820ecb?w=200&h=200&fit=crop'
     },
     {
       id: 3,
@@ -57,7 +60,8 @@ const Index = () => {
       bonus: 'До 20 000 ₽',
       features: ['ТВ-игры', 'Виртуальный спорт', 'Статистика'],
       pros: ['Подробная статистика', 'Широкая линия', 'Акции для постоянных клиентов'],
-      cons: ['Долгая верификация']
+      cons: ['Долгая верификация'],
+      logo: 'https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=200&h=200&fit=crop'
     },
     {
       id: 4,
@@ -68,7 +72,8 @@ const Index = () => {
       bonus: 'До 15 000 ₽',
       features: ['ЦУПИС', 'Официальная лицензия РФ', 'Пункты приёма ставок'],
       pros: ['Официальная работа в РФ', 'Быстрая поддержка', 'Безопасность'],
-      cons: ['Ниже коэффициенты']
+      cons: ['Ниже коэффициенты'],
+      logo: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?w=200&h=200&fit=crop'
     },
     {
       id: 5,
@@ -79,7 +84,8 @@ const Index = () => {
       bonus: 'До 15 000 ₽',
       features: ['Экспресс дня', 'Онлайн-трансляции', 'Фрибеты'],
       pros: ['Удобное приложение', 'Низкая минималка', 'Программа лояльности'],
-      cons: ['Ограничения по регионам']
+      cons: ['Ограничения по регионам'],
+      logo: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=200&h=200&fit=crop'
     },
     {
       id: 6,
@@ -90,7 +96,8 @@ const Index = () => {
       bonus: 'До 10 000 ₽',
       features: ['Киберспорт', 'Бонусные баллы', 'Cashout'],
       pros: ['Быстрая регистрация', 'Много способов депозита', 'Акции'],
-      cons: ['Много рекламы']
+      cons: ['Много рекламы'],
+      logo: 'https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=200&h=200&fit=crop'
     },
     {
       id: 7,
@@ -101,7 +108,8 @@ const Index = () => {
       bonus: 'До 10 000 ₽',
       features: ['Ставки на политику', 'Прогнозы экспертов', 'Промокоды'],
       pros: ['Хорошая роспись', 'Акции для новичков', 'Быстрый вывод'],
-      cons: ['Маленький лимит на вывод']
+      cons: ['Маленький лимит на вывод'],
+      logo: 'https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=200&h=200&fit=crop'
     },
     {
       id: 8,
@@ -112,7 +120,8 @@ const Index = () => {
       bonus: 'До 8 000 ₽',
       features: ['Пункты приёма ставок', 'Лояльная верификация', 'Российская лицензия'],
       pros: ['Легальная работа в РФ', 'Офлайн-точки', 'Простая регистрация'],
-      cons: ['Средние коэффициенты']
+      cons: ['Средние коэффициенты'],
+      logo: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=200&h=200&fit=crop'
     },
     {
       id: 9,
@@ -123,7 +132,8 @@ const Index = () => {
       bonus: 'До 7 000 ₽',
       features: ['Ставки на ТВ-шоу', 'Виртуальные игры', 'Кэшбек'],
       pros: ['Необычные рынки', 'Еженедельный кэшбек', 'Удобный интерфейс'],
-      cons: ['Мало способов пополнения']
+      cons: ['Мало способов пополнения'],
+      logo: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=200&fit=crop'
     },
     {
       id: 10,
@@ -134,7 +144,8 @@ const Index = () => {
       bonus: 'До 5 000 ₽',
       features: ['Ставки на спорт', 'Онлайн-казино', 'Бонусы за активность'],
       pros: ['Простая навигация', 'Быстрая поддержка', 'Регулярные акции'],
-      cons: ['Ограниченная линия']
+      cons: ['Ограниченная линия'],
+      logo: 'https://images.unsplash.com/photo-1504805572947-34fad45aed93?w=200&h=200&fit=crop'
     },
     {
       id: 11,
@@ -145,7 +156,8 @@ const Index = () => {
       bonus: 'До 5 000 ₽',
       features: ['Казино', 'Слоты', 'Live-игры'],
       pros: ['Большой выбор слотов', 'Яркий дизайн', 'Бонусы на первый депозит'],
-      cons: ['Фокус больше на казино']
+      cons: ['Фокус больше на казино'],
+      logo: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=200&h=200&fit=crop'
     },
     {
       id: 12,
@@ -156,7 +168,8 @@ const Index = () => {
       bonus: 'До 3 000 ₽',
       features: ['Киберспорт', 'Прямые трансляции', 'Мобильное приложение'],
       pros: ['Хорошая киберспортивная линия', 'Трансляции матчей', 'Молодой бренд'],
-      cons: ['Небольшие бонусы', 'Мало классических видов спорта']
+      cons: ['Небольшие бонусы', 'Мало классических видов спорта'],
+      logo: 'https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=200&h=200&fit=crop'
     }
   ];
 
@@ -405,8 +418,12 @@ const Index = () => {
                         onCheckedChange={() => toggleComparison(item.id)}
                         disabled={!selectedForComparison.includes(item.id) && selectedForComparison.length >= 3}
                       />
-                      <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center text-white font-bold text-2xl shadow-lg">
-                        {item.rank}
+                      <div className="w-16 h-16 rounded-xl overflow-hidden shadow-lg bg-white border-2 border-gray-100">
+                        <img 
+                          src={item.logo} 
+                          alt={item.title}
+                          className="w-full h-full object-cover"
+                        />
                       </div>
                     </div>
                     
